@@ -38,3 +38,11 @@ In the same folder as app, create a file called `app.py` and in the file, add `f
 Then in terminal run `flask run`
 
 This should start your flask applicaition
+
+# Generating Routes/Views
+
+To generate Routes and Views, flask provides an interface that is easy to work with
+We generate simple routes by using the app.routes() method
+
+In `routes.py` we can see we have defined a basic route to display hello world
+If we run the application, we will now see `Hello, world` displayed
