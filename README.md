@@ -46,3 +46,35 @@ We generate simple routes by using the app.routes() method
 
 In `routes.py` we can see we have defined a basic route to display hello world
 If we run the application, we will now see `Hello, world` displayed
+
+# Adding templates and Views
+
+In the folder app, add a folder called templates
+
+In the templates folder, add a file called index.html
+
+In the templates we will load the sample HTML File
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Retailer App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <h1>Hello, {{name}}</h1>
+  </body>
+</html>
+```
+
+In our python code, having
+
+```@app.route("/")
+def index():
+    return render_template("index.html", name="Cloverdale Robotics")
+```
+
+We should be able to `{{name}}` getting replaced with the appropriate value for name
