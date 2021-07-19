@@ -78,3 +78,59 @@ def index():
 ```
 
 We should be able to `{{name}}` getting replaced with the appropriate value for name
+
+# Now lets get started setting up our admin interface
+
+We will update our index.html to look like below
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Vancouver Retailer</title>
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='stylesheets/styles.css') }}"
+    />
+  </head>
+  <body>
+    <section class="congratulations">
+      <h3>ABC Equipment Rentals</h3>
+      <p>Equipment Rental Services</p>
+    </section>
+
+    <section class="instructions">
+      <form action="{{ url_for('menu') }}" method="POST">
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          maxlength="10"
+          required
+        />
+        <br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          maxlength="10"
+          required
+        />
+        <input type="hidden" name="form_submitted" value="1" />
+        <input type="submit" value="Log In" class="signin" />
+      </form>
+      <div>
+        <p style="color: red">{{msg}}</p>
+      </div>
+    </section>
+  </body>
+</html>
+
+```
+
+Don't be worried about what the html does, our focus for this class is not html, but rather on the python concepts and ideas
+
+A Static folder will be provided for you, and will contain all the styles needed for our webpage.
