@@ -53,3 +53,16 @@ def getUserByID(username):
     except mysql.get_db().cursor().DatabaseError as e:
         print(e)
         return e
+
+def getUsers():
+
+    try:
+        cur = mysql.get_db().cursor(DictCursor)
+        cur.execute("SELECT * FROM users")
+        userlist = cur.fetchall()
+        print("userlist " ,userlist)
+        cur.close()
+        return userlist
+    except mysql.get_db().cursor().DatabaseError as e:
+        print(e)
+        return e

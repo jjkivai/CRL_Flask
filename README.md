@@ -222,3 +222,19 @@ And lastly we add `getUserById` in `helpers`
 NOTE: REMEMBER WE MUST IMPORT `routes` in `app/__init.py` or else our server won't run
 
 We now are able to log in users, but we cannot complete the view, as some url endpoints are missing, so we will add them in the next part.
+
+Now let's add new urls endpoints to resolve our errors
+
+The first one being `/viewequipments`, this is a URL endpoint to view all non checked out equipment
+
+Followed by `/viewusers` to generate a lost of all users
+
+To get a list of equipment, we need a helper `getequipments()` to generate the list for us and a `getusers` to generate list of users
+
+We will create a `inventoryHelper.py` that will connect us to the database and generate data for us
+
+We need to be able to create new users and add new equipment as well, so as usual, we will generate views for this endpoints
+
+We also need an inventory helper to create new equipment `insertequipment` and a `newuser` in user helper to add new users
+
+Lastly to get our menu page working, we need to enable users to log out. So we add a route `logout`
