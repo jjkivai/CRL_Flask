@@ -238,3 +238,5 @@ We need to be able to create new users and add new equipment as well, so as usua
 We also need an inventory helper to create new equipment `insertequipment` and a `newuser` in user helper to add new users
 
 Lastly to get our menu page working, we need to enable users to log out. So we add a route `logout`
+
+And alas, our menu page is working flawlwssly as expected
