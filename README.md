@@ -134,3 +134,91 @@ We will update our index.html to look like below
 Don't be worried about what the html does, our focus for this class is not html, but rather on the python concepts and ideas
 
 A Static folder will be provided for you, and will contain all the styles needed for our webpage.
+
+# Learning about post requests and form submissions
+
+In order to securely send login data, we need to use post request, that encrypts our data and sends it to the server
+
+The flask framework provides us with a `request` interface, that easily allows to access the sent data in the formart `request.form`
+
+We will need a helper folder to make it easier to access functions instead of typing them out everytime.
+
+Create a new folder called helpers, add an `__init__.py` file to decalare it as a python module, and add a `userhelpers.py` file.
+
+In `userhelpers.py` add a `validateuser` function that will help us verify users
+
+And now we will be able to sign in users
+
+Before we can sign in users, we need to set a secret key in order to encrypt our forms from hackers.
+
+go to `__init__.py` and add `app.config["SECRET_KEY"] = 'my_very_long_secure_keyeaf'`
+
+`
+And finally we add the user menu views and admin menu views.
+
+In `/templates` create two folders `admin` and `user`
+
+In admin add `menu.html`
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Praveen Training Tool</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}" />
+</head>
+<body>
+	<div class="topnav">
+          <a class="active" href="#home">My Profile</a>
+          <a href="{{ url_for('equipment') }}">Add New Equipment</a>
+          <a href="{{ url_for('viewequipments') }}">View All Equipments</a>
+          <a href="{{ url_for('addusers') }}">User Management</a>
+          <a href="{{ url_for('viewusers') }}">View All Users</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+	</div>
+	<br><br>
+
+     <div class="divtable">
+      <table class="gridtable" >
+      <tr>
+
+    	  <th>User ID</th>
+    	  <th>FirstName</th>
+    	  <th>LastName</th>
+    	  <th>Email ID</th>
+    	  <th>Phone no.</th>
+
+      </tr>
+      <tr>
+    	  {% for userlist in msg %}
+    	<tr>
+
+      		<td>{{userlist['UserName']}}</td>
+    	  	<td>{{userlist['FirstName']}}</td>
+    	  	<td>{{userlist['Lastname']}}</td>
+    	  	<td>{{userlist['EmailID']}}</td>
+    	  	<td>{{userlist['Phone']}}</td>
+
+
+    	</tr>
+
+{% endfor %}
+
+      </tr>
+      </table>
+
+    </div>
+
+</body>
+</html>
+
+```
+
+And lastly we add `getUserById` in `helpers`
+
+NOTE: REMEMBER WE MUST IMPORT `routes` in `app/__init.py` or else our server won't run
+
+We now are able to log in users, but we cannot complete the view, as some url endpoints are missing, so we will add them in the next part.

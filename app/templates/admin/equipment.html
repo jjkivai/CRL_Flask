@@ -1,0 +1,88 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Praveen Training Tool</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}" />
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
+</head>
+<body>
+	<div class="topnav">
+          <a href="{{ url_for('adminprofile') }}">My Profile</a>
+          <a class="active" href="#equipment">Add New Equipment</a>
+          <a href="{{ url_for('viewequipments') }}" >View All Equipments</a>
+          <a href="{{ url_for('addusers') }}">User Management</a>
+          <a href="{{ url_for('viewusers') }}">View All Users</a>
+		<a href="{{ url_for('logout') }}">Logout</a>
+	</div>
+	<br><br>
+
+
+    <div >
+      <form action="{{ url_for('addequipment') }}" method="POST">
+
+			<Table >
+        	<tr>
+        		<td>Equipment Type</td>
+        		<td>	<select name="EquipmentType" id="EquipmentRequest">
+            						<option></option>
+            						<option value="Online only" >Online only</option>
+            						<option value="In-store only" >In-store only</option>
+            						<option value="Online and In-store" >Online and In-store</option>
+            					</select>
+            	</td>
+        	</tr>
+        	<tr>
+            	<td>Name</td>
+            	<td><input type="text" name="Name" value="Driller"> </td>
+            </tr>
+            <tr>
+            	<td>SKU #</td>
+            	<td><input type="text" name="SKU" value="SKU100"> </td>
+            </tr>
+            <tr>
+            	<td>Description</td>
+            	<td><textarea name="Description"  class="reqDescription" rows="4" cols="50"> </textarea></td>
+            </tr>
+            <tr>
+            	<td>Available From</td>
+            	<td><input type="text" name="AvailableFrom" id="tbDate"  value="2021-07-13"> </td>
+            </tr>
+            <tr>
+            	<td>Quantity</td>
+            	<td><input type="text" name="Quantity" value=5></td>
+            </tr>
+            <tr>
+            	<td>Estimated Cost (in CAD)</td>
+            	<td><input type="text" name="EstimatedCost"  value=499></td>
+            </tr>
+            <tr></tr>
+            <tr>
+            	<td></td><td><input type="submit" class="createRequest" value="Submit Request"  ></td>
+            </tr>
+
+        	</Table>
+		</form>
+    </div>
+	<div>
+		<p style="color:blue">{{msg}}</p>
+
+	</div>
+   
+</body>
+
+<script>
+        $(document).ready(function () {
+            $('input[id$=tbDate]').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+	</script>
+</html>
+

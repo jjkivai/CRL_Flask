@@ -1,0 +1,54 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Praveen Training Tool</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}" />
+</head>
+<body>
+	<div class="topnav">
+          <a class="active" href="#userprofile">My Profile</a>
+          <a href="{{ url_for('newrequest') }}">New Request</a>
+          <a href="{{ url_for('allrequests') }}">My Requests</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+
+	</div>
+	<br><br>
+
+     <div class="divtable">
+	  <table class="gridtable" >
+	  <tr>
+		  <th>User Role</th>
+		  <th>User ID</th>
+		  <th>FirstName</th>
+		  <th>LastName</th>
+		  <th>Email ID</th>
+		  <th>Phone no.</th>
+
+	  </tr>
+	  <tr>
+		  {% for userlist in msg %}
+    	<tr>
+      		<td>{{userlist['RoleID']}}</td>
+      		<td>{{userlist['UserName']}}</td>
+		  	<td>{{userlist['FirstName']}}</td>
+		  	<td>{{userlist['Lastname']}}</td>
+		  	<td>{{userlist['EmailID']}}</td>
+		  	<td>{{userlist['Phone']}}</td>
+
+
+    	</tr>
+  			{% endfor %}
+
+	  </tr>
+	  </table>
+
+    </div>
+   
+</body>
+</html>
+
