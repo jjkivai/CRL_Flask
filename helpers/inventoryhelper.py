@@ -8,8 +8,8 @@ mysql = MySQL(
     app,
     prefix="my_database",
     host="localhost",
-    user="root",
-    password="mypass",
+    user="jjkivai",
+    password="jjkivai",
     db="rental",
     autocommit=True,
 )
@@ -28,18 +28,30 @@ def getequipments():
         print(e)
         return e
 
+
 def insertequipment(details):
 
     try:
-        EquipmentType = details['EquipmentType']
-        Name = details['Name']
-        SKU = details['SKU']
-        Description = details['Description']
-        AvailableFrom = details['AvailableFrom']
-        Quantity = details['Quantity']
-        EstimatedCost = details['EstimatedCost']
+        EquipmentType = details["EquipmentType"]
+        Name = details["Name"]
+        SKU = details["SKU"]
+        Description = details["Description"]
+        AvailableFrom = details["AvailableFrom"]
+        Quantity = details["Quantity"]
+        EstimatedCost = details["EstimatedCost"]
         cur = mysql.get_db().cursor()
-        cur.execute("INSERT INTO equipment(EquipmentType, Name, SKU, Description, AvailableFrom, Quantity, Cost) VALUES (%s, %s,%s,%s,%s,%s,%s)", (EquipmentType,Name,SKU,Description,AvailableFrom,Quantity,EstimatedCost))
+        cur.execute(
+            "INSERT INTO equipment(EquipmentType, Name, SKU, Description, AvailableFrom, Quantity, Cost) VALUES (%s, %s,%s,%s,%s,%s,%s)",
+            (
+                EquipmentType,
+                Name,
+                SKU,
+                Description,
+                AvailableFrom,
+                Quantity,
+                EstimatedCost,
+            ),
+        )
         mysql.get_db().commit()
         cur.close()
         return "Equipment inserted successfully.."

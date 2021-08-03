@@ -1,81 +1,86 @@
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Praveen Training Tool</title>
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}" />
-    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
-</head>
-<body>
-	<div class="topnav">
-          <a href="{{ url_for('adminprofile') }}">My Profile</a>
-         <a href="{{ url_for('equipment') }}">Add New Equipment</a>
-          <a href="{{ url_for('viewequipments') }}" >View All Equipments</a>
-          <a class="active" href="{{ url_for('addusers') }}">User Management</a>
-          <a href="{{ url_for('viewusers') }}">View All Users</a>
-		  <a href="{{ url_for('logout') }}">Logout</a>
-	</div>
-	<br><br>
-
-
-    <div >
-      <form action="{{ url_for('newuser') }}" method="POST">
-
-			<Table >
-        	<tr>
-        		<td>User Role</td>
-        		<td>	<select name="roleType" id="EquipmentRequest">
-            						<option></option>
-            						<option value="1" >Admin</option>
-            						<option value="2" >SuperUser</option>
-            						<option value="3" >User</option>
-            					</select>
-            	</td>
-        	</tr>
-        	<tr>
-            	<td>User ID</td>
-            	<td><input type="text" name="userID" > </td>
-            </tr>
-            <tr>
-            	<td>FirstName</td>
-            	<td><input type="text" name="fName" > </td>
-            </tr>
-				<tr>
-            	<td>LastName</td>
-            	<td><input type="text" name="lName" > </td>
-            </tr>
-			<tr>
-            	<td>Default Password</td>
-            	<td><input type="text" name="password" value="Canada123"> </td>
-            </tr>
-			<tr>
-            	<td>Email ID</td>
-            	<td><input type="text" name="email" > </td>
-            </tr>
-			<tr>
-            	<td>Phone no.</td>
-            	<td><input type="text" name="ph" > </td>
-            </tr>
-            <tr>
-            	<td></td><td><input type="submit" class="createRequest" value="Add New"  ></td>
-            </tr>
-
-        	</Table>
-		</form>
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='stylesheets/styles.css') }}"
+    />
+    <link
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="{{ url_for('equipment') }}">Add New Equipment</a>
+      <a href="{{ url_for('viewequipments') }}">View All Equipments</a>
+      <a class="active" href="{{ url_for('addusers') }}">User Management</a>
+      <a href="{{ url_for('viewusers') }}">View All Users</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
     </div>
-	<div>
-		<p style="color:blue">{{msg}}</p>
+    <br /><br />
 
-	</div>
-
-</body>
-
-
+    <div>
+      <form action="{{ url_for('newuser') }}" method="POST">
+        <table>
+          <tr>
+            <td>User Role</td>
+            <td>
+              <select name="roleType" id="EquipmentRequest">
+                <option></option>
+                <option value="1">Admin</option>
+                <option value="2">SuperUser</option>
+                <option value="3">User</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>User ID</td>
+            <td><input type="text" name="userID" /></td>
+          </tr>
+          <tr>
+            <td>FirstName</td>
+            <td><input type="text" name="fName" /></td>
+          </tr>
+          <tr>
+            <td>LastName</td>
+            <td><input type="text" name="lName" /></td>
+          </tr>
+          <tr>
+            <td>Default Password</td>
+            <td><input type="text" name="password" value="Canada123" /></td>
+          </tr>
+          <tr>
+            <td>Email ID</td>
+            <td><input type="text" name="email" /></td>
+          </tr>
+          <tr>
+            <td>Phone no.</td>
+            <td><input type="text" name="ph" /></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <input type="submit" class="createRequest" value="Add New" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div>
+      <p style="color: blue">{{msg}}</p>
+    </div>
+  </body>
 </html>
-

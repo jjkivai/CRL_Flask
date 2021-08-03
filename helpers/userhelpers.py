@@ -54,15 +54,40 @@ def getUserByID(username):
         print(e)
         return e
 
+
 def getUsers():
 
     try:
         cur = mysql.get_db().cursor(DictCursor)
         cur.execute("SELECT * FROM users")
         userlist = cur.fetchall()
-        print("userlist " ,userlist)
+        print("userlist ", userlist)
         cur.close()
         return userlist
+    except mysql.get_db().cursor().DatabaseError as e:
+        print(e)
+        return e
+
+
+def insertnewuser(details):
+
+    print(details)
+    try:
+        roleType = details["roleType"]
+        userID = details["userID"]
+        fName = details["fName"]
+        lName = details["lName"]
+        password = details["password"]
+        email = details["email"]
+        ph = details["ph"]
+        cur = mysql.get_db().cursor()
+        cur.execute(
+            "INSERT INTO Users(UserName,Password,FirstName,Lastname,EmailID,Phone, RoleID) VALUES (%s, %s,%s,%s,%s,%s,%s)",
+            (userID, password, fName, lName, email, ph, roleType),
+        )
+        mysql.get_db().commit()
+        cur.close()
+        return "User " + userID + " successfully created.."
     except mysql.get_db().cursor().DatabaseError as e:
         print(e)
         return e

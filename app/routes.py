@@ -2,7 +2,7 @@ import re
 from flask import render_template, request, session
 from app import app
 
-from helpers.userhelpers import validateuser, getUserByID, getUsers
+from helpers.userhelpers import validateuser, getUserByID, getUsers, insertnewuser
 
 
 @app.route("/")
@@ -56,13 +56,13 @@ from helpers.inventoryhelper import getequipments, insertequipment
 @app.route("/viewequipments", methods=["POST", "GET"])
 def viewequipments():
     equipmentlist = getequipments()
-    return render_template("/com/admin/viewequipments.html", msg=equipmentlist)
+    return render_template("/admin/viewequipments.html", msg=equipmentlist)
 
 
 @app.route("/viewusers", methods=["POST", "GET"])
 def viewusers():
     userlist = getUsers()
-    return render_template("/com/admin/viewusers.html", msg=userlist)
+    return render_template("/admin/viewusers.html", msg=userlist)
 
 
 @app.route("/addusers")
@@ -76,6 +76,13 @@ def addequipment():
         details = request.form
         result = insertequipment(details)
         return render_template("admin/equipment.html", msg=result)
+
+
+@app.route("/newuser", methods=["POST"])
+def newuser():
+    details = request.form
+    result = insertnewuser(details)
+    return render_template("/admin/adduser.html", msg=result)
 
 
 @app.route("/logout", methods=["GET"])

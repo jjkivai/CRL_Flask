@@ -8,20 +8,18 @@
     <title>Praveen Training Tool</title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}" />
-
 </head>
 <body>
 	<div class="topnav">
-          <a href="{{ url_for('equipment') }}">Add New Equipment</a>
-          <a href="{{ url_for('viewequipments') }}" >View All Equipments</a>
-          <a href="{{ url_for('addusers') }}">User Management</a>
-          <a lass="active" href="{{ url_for('viewusers') }}">View All Users</a>
-		<a href="{{ url_for('logout') }}">Logout</a>
+          <a class="active" href="#userprofile">My Profile</a>
+          <a href="{{ url_for('newrequest') }}">New Request</a>
+          <a href="{{ url_for('allrequests') }}">My Requests</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+
 	</div>
 	<br><br>
 
-
-	 <div class="divtable">
+     <div class="divtable">
 	  <table class="gridtable" >
 	  <tr>
 		  <th>User Role</th>
@@ -50,9 +48,7 @@
 	  </table>
 
     </div>
-
    
 </body>
-
 </html>
 

@@ -239,4 +239,4 @@ We also need an inventory helper to create new equipment `insertequipment` and a
 
 Lastly to get our menu page working, we need to enable users to log out. So we add a route `logout`
 
-And alas, our menu page is working flawlwssly as expected
+And alas, our menu page is working flawlessly as expected
