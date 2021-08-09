@@ -1,8 +1,11 @@
 import re
 from flask import render_template, request, session
+from werkzeug.utils import redirect
 from app import app
 
 from helpers.userhelpers import validateuser, getUserByID, getUsers, insertnewuser
+from helpers.inventoryhelper import getequipments, insertequipment
+from helpers.requesthandler import getallrequests, insertrequestdata, getallrequest
 
 
 @app.route("/")
@@ -36,7 +39,7 @@ def menu():
         elif roleID == 3:
             username = session["username"]
             userinfo = getUserByID(username)
-            return render_template("user/usermenu.html", msg=userinfo)
+            return render_template("user/menu.html", msg=userinfo)
         else:
             return render_template(
                 "/index.html", msg="Please enter a correct Username and Password"
@@ -48,9 +51,6 @@ def menu():
 @app.route("/equipment", methods=["GET"])
 def equipment():
     return render_template("/admin/equipment.html")
-
-
-from helpers.inventoryhelper import getequipments, insertequipment
 
 
 @app.route("/viewequipments", methods=["POST", "GET"])
@@ -89,3 +89,32 @@ def newuser():
 def logout():
     session.pop("username", None)
     return render_template("index.html")
+
+
+@app.route("/newrequest", methods=["GET", "POST"])
+def newrequest():
+    if request.method == "GET":
+        details = getequipments()
+        print(details)
+        return render_template("/user/newrequest.html", msg=details)
+    if request.method == "POST":
+        username = session["username"]
+        details = request.form
+        print(details)
+        status = insertrequestdata(details, username)
+        return redirect("/newrequest")
+
+
+@app.route("/allrequests", methods=["POST", "GET"])
+def allrequests():
+    username = session["username"]
+    print(username)
+    details = getallrequest(username)
+    return render_template("/user/allrequests.html", msg=details)
+
+
+@app.route("/userprofile", methods=["POST", "GET"])
+def userprofile():
+    username = session["username"]
+    userinfo = getUserByID(username)
+    return render_template("/user/menu.html", msg=userinfo)

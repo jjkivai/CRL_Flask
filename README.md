@@ -240,3 +240,11 @@ We also need an inventory helper to create new equipment `insertequipment` and a
 Lastly to get our menu page working, we need to enable users to log out. So we add a route `logout`
 
 And alas, our menu page is working flawlessly as expected
+
+Now let's add checkout of equipment to our rentals
+
+we need to allow users to make a new request, so we add `newrequest` as a route, but we need to be able to view all available equipment as well, we will need `getequipments`
+
+To allow the code to run, we will also need a way to view all previous requests, a simple `allrequests` route will do, and for that we need a helper for handling requests, we will make `requesthandler.py` and in the file, we will add a `getallrequests` function to help us
+
+We also ned users to get back to their menu page, `/userprofile` will handle that for us

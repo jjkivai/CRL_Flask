@@ -21,7 +21,6 @@ def getequipments():
         cur = mysql.get_db().cursor(DictCursor)
         cur.execute("SELECT * FROM EQUIPMENT WHERE quantity >0")
         equipmentlist = cur.fetchall()
-        print("equipmentlist ", equipmentlist)
         cur.close()
         return equipmentlist
     except mysql.get_db().cursor().DatabaseError as e:
